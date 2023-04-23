@@ -34,14 +34,14 @@ FROM alpine
 # Change the current directory
 WORKDIR /
 
-# Copy the built binary
+# Copy the built binaries
 COPY --from=builder-ls /work/litestream /bin/litestream
 COPY --from=builder-pb /work/base /bin/pocketbase
 
 # Copy the run-script
 COPY scripts/run.sh run.sh
 
-# Exposing :8090 as `pb serve` uses this port
+# Exposing :8090 as `pocketbase serve` uses this port
 EXPOSE 8090
 
 # Make new directory for the database(s)
